@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+    mssql:
+        container_name: dock-stack-mssql
+        image: mcr.microsoft.com/mssql/server
+        # restart: always
+        ports:
+            - "5434:1433"
+        environment:
+            - SA_PASSWORD=${MSSQL_PASSWORD}
+            - ACCEPT_EULA=Y
+        volumes:
+            - mssql-data:/var/opt/mssql
+
+    adminer:
+        container_name: dock-stack-adminer
+        image: adminer
+        # restart: always
+        depends_on: 
+            - mssql
+        ports:
+            - 8084:8080
+
+volumes:
+    mssql-data:
+
+
+
+
+    
