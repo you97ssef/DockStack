@@ -2,6 +2,7 @@
 
 This project includes different Docker Compose configurations for various development stacks (sql databases, nosql databases and mail server) and resources to simplify the initiation of development and web development. Each stack is located in a separate directory, and the data of the services are persisted using Docker volumes.
 
+
 ## Stacks
 
 -   **Postgres**: Contains a configuration for A PostgreSQL database provider and PgAdmin. To Host Sql databases.
@@ -13,6 +14,9 @@ This project includes different Docker Compose configurations for various develo
 -   **Redis**: Contains a configuration for A Redis database provider and Redis Commander. To Host NoSql databases ued mainly for caching.
 
 -   **MailHog**: Contains a configuration for A MailHog SMTP server. To Host a Mail server.
+
+-   **SqlServer**: Contains a configuration for A Microsoft SQL Server database provider and Adminer. To Host Sql databases.
+
 
 ## Usage
 
@@ -44,6 +48,7 @@ This project includes different Docker Compose configurations for various develo
 ```sh
     docker-compose down # You can add the -v flag to remove the volumes as well and the --rmi all flag to remove the images as well
 ```
+
 
 ## Default Configuration
 
@@ -112,9 +117,23 @@ Redis Commander: localhost:8083
 redis-data volume to persist data
 ```
 
+SqlServer service
+
+```
+host: localhost
+port: 5434
+username: sa
+password: password_123
+
+Adminer: localhost:8084
+
+mssql-data volume to persist data
+```
+
 ## Note
 
 Remember to change the default passwords and other sensitive information before deploying in a production environment.
+
 
 ## License
 
