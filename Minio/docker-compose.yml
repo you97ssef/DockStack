@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    minio:
+        container_name: dock-stack-minio
+        image: minio/minio
+        restart: always
+        ports:
+            - 9000:9000
+            - 8085:9001
+        env_file: .env
+        command: server --console-address ":9001" /data
+        volumes:
+            - minio_storage:/data
+
+volumes:
+    minio_storage:
